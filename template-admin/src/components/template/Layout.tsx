@@ -9,7 +9,7 @@ interface LayoutProps {
 }
 const Layout = (props: LayoutProps) => {
   return (
-    <div className="flex dark h-screen w-screen">
+    <div className="flex  h-screen w-screen">
       <MenuLateral />
       <div className="flex flex-col bg-gray-300 dark:bg-gray-800 p-7 w-full">
 
