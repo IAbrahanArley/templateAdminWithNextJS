@@ -4,7 +4,7 @@ import MenuItem from "./MenuItem"
 
 const MenuLateral = () => {
     return (
-        <aside className="flex flex-col">
+        <aside className="flex bg-gray-200 dark:bg-gray-900  flex-col">
             <div className="flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-800 h-20 w-20">
                 <Logo/>
             </div>
@@ -14,7 +14,7 @@ const MenuLateral = () => {
                 <MenuItem url="/notificacoes" texto="Notificações" icone={IconeSino}/>
             </ul>
             <ul>
-                <MenuItem className="text-red-600 hover:bg-red-400  hover:text-white" onClick={() => console.log("teste")} texto="Sair" icone={IconeSair}/>
+                <MenuItem className="text-red-600 dark:text-red-600 hover:bg-red-400  hover:text-white dark:hover:text-white" onClick={() => console.log("teste")} texto="Sair" icone={IconeSair}/>
             </ul>
         </aside>
     )

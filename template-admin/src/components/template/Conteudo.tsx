@@ -3,7 +3,7 @@ interface ConteudoProps {
 }
 const Conteudo = (props: ConteudoProps) => {
     return (
-        <div className="flex flex-col mt-7">
+        <div className="flex dark:text-gray-200 flex-col mt-7">
             {props.children}
         </div>
     )
