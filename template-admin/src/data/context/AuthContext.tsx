@@ -14,7 +14,14 @@ interface AuthContextProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-    usuario: null,
+    usuario: {
+        uid: '',
+        nome: '',
+        email: '',
+        token: '',
+        provedor: '',
+        imagemUrl: ''
+    },
     carregando: true,
     loginGoogle: async () => {},
     login: async () => {},
