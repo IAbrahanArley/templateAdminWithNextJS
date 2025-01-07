@@ -13,6 +13,9 @@ interface AuthContextProps {
     logout: () => Promise<void>
 }
 
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
 const AuthContext = createContext<AuthContextProps>({
     usuario: {
         uid: '',
@@ -44,7 +47,7 @@ const usuarioNormalizado = async (usuarioFirebase: firebase.User): Promise<Usuar
 
 const gerenciarCookie = (logado: boolean) => {
     if (logado) {
-        Cookies.set('admin-template-auth', logado, {
+        Cookies.set('admin-template-auth', logado ? '1' : '0', {
             expires: 7
         })
     } else {
@@ -52,11 +55,18 @@ const gerenciarCookie = (logado: boolean) => {
     }
 }
 
-export function AuthProvider(props) {
+export function AuthProvider(props: AuthProviderProps) {
     const [carregando, setCarregando] = useState(true)
-    const [usuario, setUsuario] = useState<Usuario>(null)
+    const [usuario, setUsuario] = useState<Usuario>({
+        uid: '',
+        nome: '',
+        email: '',
+        token: '',
+        provedor: '',
+        imagemUrl: ''
+    })
 
-    const configurarSessao = async (usuarioFirebase) => {
+    const configurarSessao = async (usuarioFirebase: firebase.User | null) => {
         if (usuarioFirebase?.email) {
             const usuario = await usuarioNormalizado(usuarioFirebase)
             setUsuario(usuario)
@@ -64,7 +74,14 @@ export function AuthProvider(props) {
             setCarregando(false)
             return usuario.email
         } else {
-            setUsuario(null)
+            setUsuario({
+                uid: '',
+                nome: '',
+                email: '',
+                token: '',
+                provedor: '',
+                imagemUrl: ''
+            })
             gerenciarCookie(false)
             setCarregando(false)
             return false
