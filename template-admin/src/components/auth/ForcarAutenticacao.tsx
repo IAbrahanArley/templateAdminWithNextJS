@@ -3,9 +3,10 @@ import load from '../../../public/images/load.gif'
 import useAppAuth from "@/data/hook/useAppAuth"
 import router from "next/router"
 import Head from "next/head"
+import { ReactNode } from "react"
 
 interface ForcarAutenticacaoProps {
-    children?: any
+    children?: ReactNode
 }
 
 const ForcarAutenticacao = (props: ForcarAutenticacaoProps) => {

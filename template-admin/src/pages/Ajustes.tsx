@@ -1,6 +1,6 @@
 import Layout from "@/components/template/Layout"
 
-const ajustes = () => {
+const Ajustes = () => {
   return (
     <Layout titulo="Ajustes" subtitulo="Aqui voce ira realizar ajustes em sua conta">
 
@@ -8,4 +8,4 @@ const ajustes = () => {
   )
 }
 
-export default ajustes
+export default Ajustes
