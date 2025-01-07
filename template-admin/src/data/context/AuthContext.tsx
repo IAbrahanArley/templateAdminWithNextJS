@@ -67,30 +67,40 @@ export function AuthProvider(props: AuthProviderProps) {
     })
 
     const configurarSessao = async (usuarioFirebase: firebase.User | null) => {
-        if (usuarioFirebase?.email) {
-            const usuario = await usuarioNormalizado(usuarioFirebase)
-            setUsuario(usuario)
-            gerenciarCookie(true)
+        try{
+
+            if (usuarioFirebase?.email) {
+                const usuario = await usuarioNormalizado(usuarioFirebase)
+                setUsuario(usuario)
+                gerenciarCookie(true)
+                setCarregando(false)
+                return usuario.email
+            } else {
+                setUsuario({
+                    uid: '',
+                    nome: '',
+                    email: '',
+                    token: '',
+                    provedor: '',
+                    imagemUrl: ''
+                })
+                gerenciarCookie(false)
+                setCarregando(false)
+                return false
+            }
+        }finally{
             setCarregando(false)
-            return usuario.email
-        } else {
-            setUsuario({
-                uid: '',
-                nome: '',
-                email: '',
-                token: '',
-                provedor: '',
-                imagemUrl: ''
-            })
-            gerenciarCookie(false)
-            setCarregando(false)
-            return false
         }
     }
     useEffect(() =>{
-        if(Cookies.get('admin-template-auth')){
-            const cancelar = firebase.auth().onIdTokenChanged(configurarSessao)
-            return () => cancelar()
+        try{
+            if(Cookies.get('admin-template-auth')){
+                const cancelar = firebase.auth().onIdTokenChanged(configurarSessao)
+                return () => cancelar()
+            }
+
+        }finally{
+            setCarregando(false)
         }
     }, [])
 
