@@ -14,13 +14,16 @@ const autenticacao = () => {
         setErro(mensagem)
         setTimeout(() => setErro(''), tempoEmSegundos * 1000)
     }
-    const submeter = () => {
-        if (autenticacao === 'login') {
-            console.log('login')
-            exibirErro("Ocorreu um erro no login!")
-        } else {
-            console.log('cadastrar')
-            exibirErro("Ocorreu um erro no cadastro!")
+    const submeter = async () => {
+        try {
+            
+            if (autenticacao === 'login') {
+                await contexto.login(email, senha)
+            } else {
+                await contexto.cadastrar(email, senha)
+            }
+        } catch (error) {
+            exibirErro(error?.message ?? 'Erro desconhecido')
         }
     }
     return (
