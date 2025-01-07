@@ -13,7 +13,15 @@ interface AuthContextProps {
     logout: () => Promise<void>
 }
 
-const AuthContext = createContext<AuthContextProps>({})
+const AuthContext = createContext<AuthContextProps>({
+    usuario: null,
+    carregando: true,
+    loginGoogle: async () => {},
+    login: async () => {},
+    cadastrar: async () => {},
+    logout: async () => {}
+})
+
 const usuarioNormalizado = async (usuarioFirebase: firebase.User): Promise<Usuario> => {
     const token = await usuarioFirebase.getIdToken()
     return {
