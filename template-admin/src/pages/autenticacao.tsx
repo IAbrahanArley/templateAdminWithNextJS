@@ -1,8 +1,10 @@
 import AuthInput from "@/components/auth/AuthInput"
 import { IconeAtencao } from "@/components/icons"
+import useAppAuth from "@/data/hook/useAppAuth"
 import { useState } from "react"
 
 const autenticacao = () => {
+    const contexto = useAppAuth()
     const [autenticacao, setAutenticacao] = useState<'login' | 'cadastro'>('login')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -63,7 +65,7 @@ const autenticacao = () => {
 
                 <hr className="my-6 border-gray-300 w-full" />
                 <button
-                    onClick={submeter}
+                    onClick={contexto.loginGoogle}
                     className="w-full bg-red-500 hover:bg-red-400 text-white rounded px-3 py-2">
 
                     Entrar com o Google
