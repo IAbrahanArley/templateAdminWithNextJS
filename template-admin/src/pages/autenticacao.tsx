@@ -2,7 +2,6 @@ import AuthInput from "@/components/auth/AuthInput"
 import { IconeAtencao } from "@/components/icons"
 import useAppAuth from "@/data/hook/useAppAuth"
 import { useState } from "react"
-import Image from "next/image"
 const Autenticacao = () => {
     const contexto = useAppAuth()
     const [autenticacao, setAutenticacao] = useState<'login' | 'cadastro'>('login')

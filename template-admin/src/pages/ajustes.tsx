@@ -8,4 +8,4 @@ const Ajustes = () => {
   )
 }
 
-export default Ajustes
+export default Ajustes;

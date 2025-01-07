@@ -11,7 +11,7 @@ interface ForcarAutenticacaoProps {
 
 const ForcarAutenticacao = (props: ForcarAutenticacaoProps) => {
 
-    const contexto = useAppAuth()
+    const contexto = useAppAuth();
 
     const renderizarConteudo = () =>{
         return(
@@ -29,25 +29,25 @@ const ForcarAutenticacao = (props: ForcarAutenticacaoProps) => {
                 </Head>
                 {props.children}
             </>
-        )
-    }
+        );
+    };
 
     const renderizarCarregando = () =>{
         return(
           <div className=" flex justify-center items-center h-screen">
             <Image src={load} alt="gif de load da pagina"/>
           </div>
-        )
-    }
+        );
+    };
 
     if(!contexto.carregando && contexto.usuario?.email){
-        return renderizarConteudo()
+        return renderizarConteudo();
     }else if(contexto.carregando){
-        return renderizarCarregando()
+        return renderizarCarregando();
     }else{
-        router.push('/autenticacao')
-        return null
+        router.push('/autenticacao');
+        return null;
     }
 }
 
-export default ForcarAutenticacao
+export default ForcarAutenticacao;
