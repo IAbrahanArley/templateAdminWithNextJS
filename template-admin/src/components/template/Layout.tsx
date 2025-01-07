@@ -3,11 +3,12 @@ import Cabecalho from "./Cabecalho"
 import Conteudo from "./Conteudo"
 import MenuLateral from "./MenuLateral"
 import ForcarAutenticacao from "../auth/ForcarAutenticacao"
+import { ReactNode } from 'react';
 
 interface LayoutProps {
   titulo: string
   subtitulo: string
-  children?: any
+  children?: ReactNode
 }
 const Layout = (props: LayoutProps) => {
   const contexto = useAppData();

@@ -1,11 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, ReactNode } from "react";
 
-type Tema = 'dark' | ''
 
 interface AppContextProps {
     tema?: string;
-    children?: any;
-    alternarTema?: () => any;
+    children?: ReactNode;
+    alternarTema?: () => void;
 }
 
 const AppContext = createContext<AppContextProps>({

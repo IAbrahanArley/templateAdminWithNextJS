@@ -3,7 +3,12 @@ import load from '../../../public/images/load.gif'
 import useAppAuth from "@/data/hook/useAppAuth"
 import router from "next/router"
 import Head from "next/head"
-const ForcarAutenticacao = (props: any) => {
+
+interface ForcarAutenticacaoProps {
+    children?: any
+}
+
+const ForcarAutenticacao = (props: ForcarAutenticacaoProps) => {
 
     const contexto = useAppAuth()
 

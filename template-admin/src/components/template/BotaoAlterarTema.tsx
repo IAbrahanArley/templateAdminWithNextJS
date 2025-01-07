@@ -1,6 +1,5 @@
 import React from 'react'
 import { IconeLua, IconeSol } from '../icons'
-type Tema = 'dark' | ''
 
 interface BotaoAlterarTemaProps {
     tema: string

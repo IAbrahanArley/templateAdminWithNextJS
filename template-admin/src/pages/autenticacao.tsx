@@ -2,34 +2,35 @@ import AuthInput from "@/components/auth/AuthInput"
 import { IconeAtencao } from "@/components/icons"
 import useAppAuth from "@/data/hook/useAppAuth"
 import { useState } from "react"
-
-const autenticacao = () => {
+import Image from "next/image"
+const Autenticacao = () => {
     const contexto = useAppAuth()
     const [autenticacao, setAutenticacao] = useState<'login' | 'cadastro'>('login')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [erro, setErro] = useState('')
 
-    const exibirErro = (mensagem: string, tempoEmSegundos = 5) =>{
+    const exibirErro = (mensagem: string, tempoEmSegundos = 5) => {
         setErro(mensagem)
         setTimeout(() => setErro(''), tempoEmSegundos * 1000)
     }
     const submeter = async () => {
         try {
-            
+
             if (autenticacao === 'login') {
                 await contexto.login(email, senha)
             } else {
                 await contexto.cadastrar(email, senha)
             }
         } catch (error) {
-            exibirErro(error?.message ?? 'Erro desconhecido')
+            exibirErro((error as Error)?.message ?? 'Erro desconhecido');
         }
     }
     return (
         <div className="flex h-screen items-center justify-center">
             <div className="hidden md:block md:w-1/2 lg:w-2/3">
                 <img src="./rb_739.png" alt="Imagem aleatoria da tela de autenticaçao" className="h-screen w-full " />
+            
             </div>
             <div className="m-10 w-full md:w-1/2 lg:w-1/3">
                 <h1 className="text-3xl font-bold mb-5">
@@ -91,4 +92,4 @@ const autenticacao = () => {
     )
 }
 
-export default autenticacao;
+export default Autenticacao;

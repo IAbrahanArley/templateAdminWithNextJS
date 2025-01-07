@@ -1,5 +1,8 @@
+import { ReactNode } from 'react';
+
+
 interface ConteudoProps {
-    children?: any
+    children?: ReactNode
 }
 const Conteudo = (props: ConteudoProps) => {
     return (
