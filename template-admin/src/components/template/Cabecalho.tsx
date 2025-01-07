@@ -14,7 +14,7 @@ const Cabecalho = (props: CabecalhoProps) => {
       
       <Titulo titulo={props.titulo} subtitulo={props.subtitulo}/>
       <div className="flex flex-grow justify-end">
-        <BotaoAlterarTema tema={contexto.tema} alterarTema={contexto.alternarTema}/>
+        <BotaoAlterarTema tema={contexto.tema || ''} alterarTema={contexto.alternarTema!}/>
       </div>
     </div>
   )
