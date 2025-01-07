@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 
 interface AuthContextProps {
     usuario: Usuario
+    carregando?: boolean
     loginGoogle: () => Promise<void>
     logout: () => Promise<void>
 }
@@ -86,7 +87,8 @@ return (
     <AuthContext.Provider value={{
         usuario,
         loginGoogle,
-        logout
+        logout,
+        carregando
     }}>
         {props.children}
     </AuthContext.Provider>
