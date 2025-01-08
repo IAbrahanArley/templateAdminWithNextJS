@@ -93,15 +93,13 @@ export function AuthProvider(props: AuthProviderProps) {
         }
     }
     useEffect(() =>{
-        try{
             if(Cookies.get('admin-template-auth')){
                 const cancelar = firebase.auth().onIdTokenChanged(configurarSessao)
                 return () => cancelar()
+            }else{
+                setCarregando(false)
             }
 
-        }finally{
-            setCarregando(false)
-        }
     }, [])
 
     const login = async (email: string, senha: string) => {
